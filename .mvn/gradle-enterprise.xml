@@ -19,32 +19,52 @@
     under the License.
 
 -->
-<gradleEnterprise
-        xmlns="https://www.gradle.com/gradle-enterprise-maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="https://www.gradle.com/gradle-enterprise-maven https://www.gradle.com/schema/gradle-enterprise-maven.xsd">
+<!--<gradleEnterprise-->
+<!--        xmlns="https://www.gradle.com/gradle-enterprise-maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--        xsi:schemaLocation="https://www.gradle.com/gradle-enterprise-maven https://www.gradle.com/schema/gradle-enterprise-maven.xsd">-->
+<!--    <server>-->
+<!--        <url>https://ge.apache.org</url>-->
+<!--        <allowUntrusted>false</allowUntrusted>-->
+<!--    </server>-->
+<!--    <buildScan>-->
+<!--        <capture>-->
+<!--            <goalInputFiles>true</goalInputFiles>-->
+<!--            <buildLogging>true</buildLogging>-->
+<!--            <testLogging>true</testLogging>-->
+<!--        </capture>-->
+<!--        <backgroundBuildScanUpload>#{isFalse(env['GITHUB_ACTIONS'])}</backgroundBuildScanUpload>-->
+<!--        <publish>ALWAYS</publish>-->
+<!--        <publishIfAuthenticated>true</publishIfAuthenticated>-->
+<!--        <obfuscation>-->
+<!--            <ipAddresses>#{{'0.0.0.0'}}</ipAddresses>-->
+<!--        </obfuscation>-->
+<!--    </buildScan>-->
+<!--    <buildCache>-->
+<!--        <local>-->
+<!--            <enabled>#{isFalse(env['GITHUB_ACTIONS'])}</enabled>-->
+<!--        </local>-->
+<!--        <remote>-->
+<!--            <enabled>false</enabled>-->
+<!--        </remote>-->
+<!--    </buildCache>-->
+<!--</gradleEnterprise>-->
+
+<gradleEnterprise>
     <server>
-        <url>https://ge.apache.org</url>
-        <allowUntrusted>false</allowUntrusted>
+        <url>https://ec2-34-239-112-99.compute-1.amazonaws.com</url>
+        <!-- adjust depending on whether trusted cert is already configured in GE: -->
+        <allowUntrusted>true</allowUntrusted>
     </server>
     <buildScan>
+        <publish>ALWAYS</publish>
         <capture>
             <goalInputFiles>true</goalInputFiles>
-            <buildLogging>true</buildLogging>
-            <testLogging>true</testLogging>
         </capture>
-        <backgroundBuildScanUpload>#{isFalse(env['GITHUB_ACTIONS'])}</backgroundBuildScanUpload>
-        <publish>ALWAYS</publish>
-        <publishIfAuthenticated>true</publishIfAuthenticated>
-        <obfuscation>
-            <ipAddresses>#{{'0.0.0.0'}}</ipAddresses>
-        </obfuscation>
+        <!-- adjust to your CI provider: -->
+        <backgroundBuildScanUpload>true</backgroundBuildScanUpload>
     </buildScan>
     <buildCache>
-        <local>
-            <enabled>#{isFalse(env['GITHUB_ACTIONS'])}</enabled>
-        </local>
-        <remote>
-            <enabled>false</enabled>
-        </remote>
+        <local><enabled>false</enabled></local>
+        <remote><enabled>false</enabled></remote>
     </buildCache>
 </gradleEnterprise>
