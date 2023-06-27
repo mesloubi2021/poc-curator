@@ -73,7 +73,7 @@
 
         <!-- versions -->
         <zookeeper-version>3.7.1</zookeeper-version>
-        <maven-bundle-plugin-version>5.1.4</maven-bundle-plugin-version>
+        <maven-bundle-plugin-version>5.1.8</maven-bundle-plugin-version>
         <maven-compiler-plugin-version>3.10.0</maven-compiler-plugin-version>
         <maven-dependency-plugin-version>3.2.0</maven-dependency-plugin-version>
         <maven-project-info-reports-plugin-version>3.0.0</maven-project-info-reports-plugin-version>
@@ -742,6 +742,23 @@
                     <groupId>com.diffplug.spotless</groupId>
                     <artifactId>spotless-maven-plugin</artifactId>
                     <version>${spotless.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.gradle</groupId>
+                    <artifactId>gradle-enterprise-maven-extension</artifactId>
+                    <configuration>
+                        <gradleEnterprise>
+                            <normalization>
+                                <runtimeClassPath>
+                                    <metaInf>
+                                        <ignoredAttributes>
+                                            <ignore>Bnd-LastModified</ignore>
+                                        </ignoredAttributes>
+                                    </metaInf>
+                                </runtimeClassPath>
+                            </normalization>
+                        </gradleEnterprise>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

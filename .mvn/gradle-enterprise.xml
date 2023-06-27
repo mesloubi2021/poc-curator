@@ -64,7 +64,7 @@
         <backgroundBuildScanUpload>true</backgroundBuildScanUpload>
     </buildScan>
     <buildCache>
-        <local><enabled>false</enabled></local>
+        <local><enabled>true</enabled></local>
         <remote><enabled>false</enabled></remote>
     </buildCache>
 </gradleEnterprise>
